@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "b3c8f1e2-45d6-4892-91ab-pathology001",
+		"name": "Pathology Management System API",
+		"description": "Complete REST API Collection for Pathology Management System built with Java Spring Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Patient Management",
+			"item": [
+				{
+					"name": "Register Patient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Suresh Raina\",\n  \"age\": 36,\n  \"gender\": \"MALE\",\n  \"mobile\": \"9876543210\",\n  \"email\": \"suresh.raina@example.com\",\n  \"address\": \"15 Brigade Road, Bengaluru\",\n  \"bloodGroup\": \"A+\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patients",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patients"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/patients",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patients"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Patient By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/patients/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Search Patients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/patients/search?query=Suresh",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patients",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "Suresh"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Patient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Suresh Raina Updated\",\n  \"age\": 37,\n  \"gender\": \"MALE\",\n  \"mobile\": \"9876543210\",\n  \"email\": \"suresh.updated@example.com\",\n  \"address\": \"15 Brigade Road, Bengaluru\",\n  \"bloodGroup\": \"A+\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patients/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patients",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Doctor Management",
+			"item": [
+				{
+					"name": "Register Doctor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Dr. Sunita Kulkarni\",\n  \"specialization\": \"Pathologist\",\n  \"clinicHospitalName\": \"City Hospital\",\n  \"mobile\": \"9822334455\",\n  \"email\": \"sunita.k@cityhosp.org\",\n  \"commissionPercentage\": 10.0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/doctors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"doctors"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Doctors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/doctors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"doctors"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Test Catalog",
+			"item": [
+				{
+					"name": "Create Test Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Endocrinology\",\n  \"description\": \"Hormonal & Thyroid function tests\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Pathology Test",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"testName\": \"Vitamin D3 (25-OH)\",\n  \"categoryId\": 2,\n  \"price\": 1200.0,\n  \"sampleType\": \"SERUM\",\n  \"unit\": \"ng/mL\",\n  \"refMinValue\": 30.0,\n  \"refMaxValue\": 100.0,\n  \"normalRangeText\": \"30.0 - 100.0 ng/mL\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tests",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tests"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Tests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tests",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tests"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Lab Order Booking",
+			"item": [
+				{
+					"name": "Create Lab Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"patientId\": 1,\n  \"doctorId\": 1,\n  \"testIds\": [1, 2],\n  \"discountAmount\": 50.0,\n  \"paymentStatus\": \"PAID\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Order Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/1/status?status=SAMPLE_COLLECTED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"1",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "SAMPLE_COLLECTED"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Lab Result Entry & Reports",
+			"item": [
+				{
+					"name": "Enter Test Results & Generate Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orderId\": 1,\n  \"verifiedBy\": \"Dr. Pathologist\",\n  \"isApproved\": true,\n  \"clinicalNotes\": \"Patient Hb count normal, Fasting glucose slightly high.\",\n  \"results\": [\n    {\n      \"testId\": 1,\n      \"resultValue\": \"14.5\",\n      \"numericValue\": 14.5,\n      \"remarks\": \"Normal\"\n    },\n    {\n      \"testId\": 2,\n      \"resultValue\": \"115.0\",\n      \"numericValue\": 115.0,\n      \"remarks\": \"Elevated\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reports",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reports"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Report By Order ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reports/order/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reports",
+								"order",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Dashboard Metrics",
+			"item": [
+				{
+					"name": "Get Dashboard Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/dashboard/summary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dashboard",
+								"summary"
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
